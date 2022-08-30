@@ -1,0 +1,124 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 2}
+\end{center}
+
+\begin{center}
+	\bf{Árboles Generadores de Costo Mínimo}\\
+\end{center}
+
+\small
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+	\item Considere la siguiente implementación del algoritmo de Prim-Jarnik:
+	
+	\begin{algorithm}
+		\footnotesize
+		\label{alg:1}
+		\caption{\textit{Prim-Jarnik}.}
+		\KwIn{$\langle G,w,r\rangle$ donde $G=(V,E)$ es un grafo conexo, $w:E \to \Q_+$ función de pesos y $r\in V$ vértice.}
+		\KwOut{Árbol Generadores de Costo Mínimo de $G$}
+		\For{$u \in V$}{
+			$key(u) \gets \infty$\\
+			$\pi(u) \gets \mathrm{NULL}$
+		}
+		$key(r) \gets 0$\\
+		$Q \gets V$\\
+		\While{$Q \neq \emptyset$}{
+			$u \gets \textit{Extract-Min}(Q)$\\
+			\For{$v\in N(u)$}{
+				\If{$v\in Q$ y $w(uv)<key(u)$}{
+					$\pi(v) \gets u$\\
+					$key(v) \gets w(uv)$
+				}
+			}
+		}
+		$F\gets \{(v,\pi(v)) \mid v \in V-r\}$\\
+		\Return{$(V,F)$}
+	\end{algorithm}
+	
+	\begin{enumerate}
+		\item Demuestre que el algoritmo es correcto.
+		\item Calcule la complejidad del algoritmo.
+	\end{enumerate}
+
+	\item \textbf{Aproximación para TSP Métrico}
+	
+	Dado grafo completo $G$ y distancias $\ell: E(G) \rightarrow \R_{+}$ (satisface la desigualdad triangular), encontrar un ciclo Hamiltoniano de largo mínimo.
+
+	Para resolver este problema usaremos \textbf{\textit{shortcut}}, estrategia que consiste en reemplazar dos aristas vecinas $v_1 v_2 v_3$ por una directa entre los vértices de los extremos $v_1 v_3$, saltandose así el vértice común $v_2$.
+
+	Sea $\OPT$ el ciclo Hamiltoniano de largo mínimo.
+
+	Sabiendo que todo multigrafo Euleriano tiene paseos Eulerianos, considere el siguiente algoritmo:
+	
+	\begin{algorithm}
+		\footnotesize
+		\label{alg:2}
+		\caption{Aproximación para TSP Métrico.}
+		\KwIn{$\langle G,\ell\rangle$ donde $G=(V,E)$ grafo completo y distancias $\ell: E(G) \rightarrow \R_{+}$.}
+		\KwOut{Ciclo Hamiltoniano}
+		$H \gets$ Submultigrafo Euleriano (conexo con grados pares) de $G$.\\
+		$\ALG \gets$ Encontrar paseo Euleriano (recorre todas las aristas) para $H$.\\
+		\While{$\exists u \in V, \delta_\ALG(u)>2$}{
+			$\ALG \gets$ Aplicar \textit{shortcut} en $u$ a $\ALG$.\\
+		}
+		\Return{$\ALG$.}
+	\end{algorithm}
+
+	\begin{enumerate}
+		\item Suponiendo que se puede generar el submultigrafo Euleriano $H$, demuestre que el algoritmo es correcto.
+		Pruebe además que $\ell(\ALG) \leq \ell(H)$.
+		\item Sea $T$ un MST de $G$ y sea $H$ el multigrafo que duplica las aristas de $T$. Pruebe que $\ell(H) \leq 2 \ell (\OPT)$.
+		\item Sea $M$ un matching perfecto (aristas independientes que cubren todos los vértices) de peso mínimo de los vértices de grado impar de $T$.
+		Un corolario del Lema del Apretón de Manos asegura que hay una cantidad par de dichos vértices, por lo que dicho matching perfecto existe.
+		Pruebe que $H' = T + M$ es tal que $\ell(H') \leq \dfrac{3}{2}\ell(\OPT)$.
+	\end{enumerate}
+
+	\item \textbf{[Propuesto]} Considere la siguiente implementación del algoritmo de Boruvka:
+	
+	\begin{algorithm}
+		\footnotesize
+		\label{alg:3}
+		\caption{\textit{Boruvka}.}
+		\KwIn{$\langle G,c\rangle$ donde $G=(V,E)$ es un grafo conexo y $c:E \to \Q_+$ función de pesos.}
+		\KwOut{Árbol Generadores de Costo Mínimo de $G$}
+		$F\gets \emptyset$\\
+		\While{$cc(V,F)\neq 1$}{
+			Encontrar CC de $(V,F)$ y calcular $cc(V,F)$\\
+			\For{U CC de $(V,F)$}{
+				Encontrar $e_U \in \delta(U)$ arista de menor peso\\
+				$F \gets F \cup {e_U}$
+			}
+		}
+		\Return{$(V,F)$}
+	\end{algorithm}
+	
+	\begin{enumerate}
+		\item Justifique que solo basta probar que el grafo $(V, F)$ entregado es acíclico.
+		
+		Llame $G_{i}=\left(V, F_{i}\right)$ al grafo al comienzo de la iteración $i$ y $\mathcal{U}_{i}$ al conjunto de sus componentes conexas. Note que el algoritmo escoge para cada componente $U \in \mathcal{U}_{i}$ una arista $e_{U}$ de menor peso en $\delta(U)$ y llame $f\left(e_{U}\right) \in \mathcal{U}_{i}$ a la componente a la cual pertenece el extremo de $e_{U}$ que no está en $U$. Con esto en mente, defina $G_{i}^{\prime}=\left(\mathcal{U}_{i}, F_{i}^{\prime}\right)$ como el digrafo cuyos vértices son las componentes de $\mathcal{U}_{i}$ y donde para cada $U \in \mathcal{U}_{i}$ agregamos el arco $\tilde{U}=U f\left(e_{U}\right)$ a $F_{i}^{\prime}$. Por simplicidad extienda la función de costos $\operatorname{como} c(\tilde{U})=c\left(e_{U}\right)$
+		\item Demuestre que los únicos diciclos de $G_{i}^{\prime}$ tienen largo 2 (corresponden a arcos paralelos). Más aún, pruebe que si $\tilde{U}$ y $\tilde{W}$ son arcos paralelos en $G_{i}^{\prime}$, entonces $e_{U}=e_{W}$.
+		\item Sea $G_{i}^{\prime \prime}$ el grafo subyaciente de $G_{i}^{\prime}$ manteniendo solo una arista de cada par de arcos paralelos. Justifique que $G_{i}^{\prime \prime}$ no tiene ciclos. Use esto para demostrar inductivamente que $G_{i}=\left(V, F_{i}\right)$ no posee ciclos.
+		\item Concluya.
+	\end{enumerate}
+	
+	% \item \textbf{[Propuesto] Second-Best MST}
+	
+	% Sea $G=(V, E)$ un grafo conexo con peso en los arcos $w: E \rightarrow \mathbb{Q}_{+}$, suponga además que todos los pesos son distintos.
+	% Sea $\mathcal{T}$ el conjunto de todos los árboles generadores de $G$ y $T^{*}$ el único MST, diremos que $T$ es un segundo-mejor MST si $w(T)=\min _{A \in \mathcal{T} \setminus \{T^*\}} w(A)$.
+	% \begin{enumerate}
+	% 	\item Demuestre que en este caso efectivamente el MST es único.
+	% 	\item Sea $T^{*}$ el MST de $G$. Demuestre que hay aristas $e, f \in E$ tales que $T^{*}-e+f$ es un segundo-mejor MST.
+	% 	\item Sea $T$ un ST de $G, u, v \in V$ y $P_{u, v}$ el único $u v$ camino entre $u$ y $v$ en $T$. Definimos:
+	% 	\[\max [u, v]=\underset{e \in P_{u, v}}{\arg \max} w_e\]
+	% 	Diseñe un algoritmo que dado $T$ calcule $\max [u, v]$ para todo par $u, v \in V$ en tiempo $O(|V|^2)$.
+	% 	\item De un algoritmo $O(|V||E|)$ que dado un grafo $G$ calcule el segundo-mejor MST.
+	% 	\begin{obs}
+	% 		Es posible que encunetre un algoritmo $O\left(|V|^{2}\right)$.
+	% 	\end{obs}
+	% \end{enumerate}
+\end{enumerate}
+\end{document}
