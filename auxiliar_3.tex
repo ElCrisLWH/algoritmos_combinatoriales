@@ -1,0 +1,37 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 3}
+\end{center}
+
+\begin{center}
+	\bf{Árboles Generadores de Costo Mínimo y Matroides}\\
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+
+	\item Considere $G=(V,E)$ conexo y $w:E\to \Q^+$ una función de peso. \begin{enumerate}
+		%\item Sea $C\subseteq G$ un ciclo. Sea $e\in E(C)$ tal que $w(e)\geq w(f) \forall f \in E(C)$. Pruebe que existe $T^*$ MST de $G$ tal que $e\notin E(T^*)$.
+		\item Sea $\emptyset \neq U\subset V$. Sea $e\in \delta(U)$ tal que $w(e)\leq w(f), \forall f \in \delta(U)$. Pruebe que existe $T^*$ MST de $G$ tal que $e\in E(T^*)$.
+		\item Sea $T^*$ un MST de $G$. Sea $e=uv\in E(T)$. Sea $P$ un $u$-$v$-camino en $G-e$. Pruebe que $w(e) \leq w(f), \forall f \in E(P)$
+	\end{enumerate}
+	
+	\item Para $G=(V,E)$ grafo conexo se define \textbf{Minimum Bottleneck Spanning Tree}\footnote{También lo pueden encontrar como MinMax Spanning Tree.} como un árbol generador de $G$ en el que la arista de mayor costo es lo más barata posible.\begin{enumerate}
+		\item Pruebe que si $T$ es MST de $G$ también es MBST.
+		\item ¿Se puede asegurar que si $T$ es MBST entonces también es MST?
+	\end{enumerate}
+	
+	\item Considere $\mathcal{M}=(\mathcal{S}, \mathcal{I})$ una matroide. Se define un \textbf{circuito} como un conjunto dependiente minimal, es decir, un conjunto $C$ tal que $C\notin \mathcal{I}, \forall e \in C, C-e\in\mathcal{I}$.\begin{enumerate}
+		\item Sean $C,D$ circuitos no disjuntos y sea $e\in C\cap D$. Pruebe que $C\cup D - e$ no es independiente.
+		\item Sea $I$ independiente y sea $e\notin I$. Pruebe que $I+e$ tiene a lo más 1 circuito.
+	\end{enumerate}
+
+	\item Sea $\tilde{\mathcal{M}}=(\tilde{\mathcal{S}},\tilde{\mathcal{I}})$. Diremos que $\tilde{\mathcal{M}}$ es \textbf{de partición} si existe una partición de $\tilde{\mathcal{S}}$ en conjuntos $S_1, \dots , S_k$ no vacíos (llamados bloques) y existen $b_1, \dots , b_k\in\N$ tales que $\forall X\subseteq \tilde{\mathcal{S}}\hspace{0.5em} (X\in \tilde{\mathcal{I}}\iff \forall i\in[k], X\cap S_i \leq b_i)$.
+		\\ Pruebe que si $\tilde{\mathcal{M}}$ es de partición, entonces es una matroide.
+
+	\item Dado $G=(V,E)$ grafo conexo, se define $I(G):=\{E'\subseteq E | (V, E \setminus E') \text{ es conexo}\}$.
+		\\ Pruebe que $M(G) = (E, I(G))$ es matroide\footnote{Se llama matroide cográfica de $G$}.
+
+\end{enumerate}
+\end{document}
