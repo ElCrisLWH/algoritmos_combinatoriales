@@ -1,0 +1,45 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 4}
+\end{center}
+
+\begin{center}
+	\bf{Dicaminos de Costo Mínimo}\\
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+	\item Considere un grafo dirigido $G = (V,E)$ y dos vértices $s,t \in V$. Usted desea viajar desde el nodo $s$ hasta
+	el nodo $t$, lamentablemente atravesar una ariste $e$ no es necesariamente seguro, por lo que tiene una
+	probabilidad $p_e \in [0, 1]$ de sobrevivir el viaje por la arista $e$.
+	Considere dichas probabilidades son independientes, por lo que la probabilidad de sobrevivir a un $st$-camino $P$ está
+	dada por $\prod_{e\in P} p_e$. Deseamos encontrar el camino que maximice la probabilidad de sobrevivir.
+	Reduzca el problema a uno de camino de costo mínimo y dé un algoritmo para resolverlo.
+
+	\item Con el uso masivo de GPS, las calles que forman parte de los caminos más cortos se están volviendo cada vez más
+	congestionadas, limitando la utilidad de seguir las indicaciones dadas por el dispositivo. Por ello, le interesa calcular
+	el camino casi más corto entre su casa y su trabajo. El camino casi más corto entre $s$ y $t$ se define como el $st$-camino
+	más corto que no usa ninguna arista de algún camino de costo mínimo entre $s$ y $t$.
+	
+	\begin{enumerate}
+		\item Asuma que todo $st$-camino mínimo es disjunto. Diseñe un algoritmo que encuentre
+		el camino casi más corto entre $s$ y $t$ en $O(|E|(|E|+|V|\log|V|))$.
+		\item Para el caso general, diseñe un algoritmo en $O(|E|+|V|\log|V|)$ considerando verificar para cada arista $uv$ si esta pertenece a algún camino más corto comprobando si la suma de la distancia de $s$ a $u$, del largo de $uv$ y de la distancia de $v$ a $t$ es igual a la distancia máxima.
+	\end{enumerate}
+
+	\item \textbf{[Propuesto] Maximum Bottleneck Path:} Sea $G = (V,E)$ un digrafo, $c: E \to \R$ una función de capacidades y dados $s, t \in V$,
+	modifique el algoritmo Dijkstra para encontrar el $st$-camino cuya arista con menos capacidad sea de capacidad máxima.
+	En otras palabras, se define la capacidad de un camino como la capacidad mínima de sus aristas y se busca el $st$-camino de capacidad máxima.
+
+	\item \textbf{[Propuesto]} Sea $G = (V,E)$ un grafo y suponga que tiene acceso a una matriz $D$ tal que $D_{u,v}$ es el costo del camino de costo
+	mínimo entre $u$ y $v$. Suponga que ahora se disminuye el costo $w_e$ de una arista $e \in E$ a un nuevo costo $w'_e$.
+	Diseñe un algoritmo $O(|V|^2)$ para actualizar la matriz $D$ considerando el nuevo costo.
+
+	\item \textbf{[Propuesto]} Sea $G = (V,E)$ un grafo con largos $\ell: E \to \R_+$ y tiempos de espera $w: V \to \R_+$ en los nodos.
+	El largo de un camino $P$ de $s$ a $t$ se define como la suma de los largos de los arcos más la suma de los tiempos de
+	espera de los nodos que atravieza. Encuentre un algoritmo que calcule una arborescencia de caminos mínimos
+	desde $s$ vía una reducción.
+
+\end{enumerate}
+\end{document}
