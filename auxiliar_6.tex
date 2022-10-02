@@ -1,0 +1,45 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 6}
+\end{center}
+
+\begin{center}
+	\bf{Repaso Control 1}\\
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+	\item Sea $G=(V,E)$ un grafo conexo, $w:E \to \R_+$ una función de peso positiva.
+	\begin{enumerate}
+		\item Pruebe que todo subgrafo conexo cobertor de peso mínimo es un árbol.
+		\item Encuentre un contraejemplo en el caso en que $w$ no sea positiva.
+	\end{enumerate}
+
+	\item Sea $G=(V,E)$ un grafo conexo, $w:E \to \R$ una función de peso, $C \subseteq G$ un ciclo y $e$ una arista de mayor peso en $C$.
+	Pruebe que existe un MST de $G$ que excluye a $e$.
+	Comente qué sucede cuando $e$ es la única de mayor peso en $C$.
+
+	\item Sea $G=(V, E)$ un grafo dirigido, $w: E \to \N$ una función de peso y $W= \max_{e\in E} w(e)$.
+	Sea $k = \lceil \log_2(W+1) \rceil$, el número de dígitos de $W$ en binario. Considere:
+	\[\forall i \in [k], w_i = \left\lfloor\frac{w}{2^{k-i}}\right\rfloor, \text{ los $i$ dígitos más significativos de } w\]
+	\[\forall i \in [k], \forall u,v \in V, d_i(u, v), \text{ la distancia mínima entre $u$ y $v$ para } w_i\]
+	
+	Nuestro objetivo es mostrar un algoritmo que dado un vértice $s$ calcule su distancia mínima $d(s, v)$ para todo $v \in V$ en tiempo $O(\log(W)|E|)$. Supondremos además que $|E| \geq |V|-1$.
+	\begin{enumerate}
+		\item Muestre que es posible calcular $d_1(s, v)$ para todo $v \in V$ en tiempo $O(|E|)$.
+		\item Suponga que $d(s, v) \leq |E|$, pruebe modificando la cola de prioridad de Djikstra que es posible calcular $d(s, v)$ para todo $v \in V$ en tiempo $O(|E|)$.
+		\item \textbf{[Propuesto]} Nos interesa calcular $d_i$ a partir de $d_{i-1}$ y para eso probaremos un par de cosas, para empezar pruebe que:
+		\[2 d_{i-1}(s, v) \leq d_i(s, v) \leq 2 d_{i-1}(s, v)+|V|-1\]
+		\item \textbf{[Propuesto]} Para $u, v \in V$ definimos:
+		\[\hat{w}_i(u, v)=w_i(u, v)+2 d_{i-1}(s, u)-2 d_{i-1}(s, v)\]
+		Pruebe que $\hat{w}_i(u, v)$ es un entero no negativo.
+		\item \textbf{[Propuesto]} Para $u, v \in V$, sean $\hat{d}_i(u,v)$ la distancia mínima entre $u$ y $v$ para $\hat{w}_i$. Pruebe que $d_i(s, v)=\hat{d}_i(s, v)+2 d_{i-1}(s, v)$.
+		\item \textbf{[Propuesto]} Entregue el algoritmo deseado.
+	\end{enumerate}
+
+	\item \textbf{[Propuesto]} Sea $G=(V,E)$ un grafo conexo, sea $T$ un MST de $G$, sea $V'\subseteq V$.
+	Sean $T'$ y $G'$ los subgrafos de $T$ y $G$, respectivamente, inducidos por $V'$.
+	Pruebe que si $T'$ es conexo, $T'$ es un MST de $G'$.
+\end{enumerate}
+\end{document}
