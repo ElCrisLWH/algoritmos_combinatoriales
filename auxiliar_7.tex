@@ -1,0 +1,17 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 7}
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+	\item Sea $G=(V,E)$ un grafo simple. Un conjunto $M\subseteq E$ se dice \textbf{matching} si $\forall e,f \in M, \hspace{0.5em}e\cap f = \emptyset$ (es decir, las aristas de $M$ no tienen vértices en común). Un conjunto $C\subseteq V$ se dice \textbf{cover} si $\forall e \in E,\hspace{0.5em} e\cap C \neq \emptyset$ (es decir, todas las aristas inciden en al menos un vértice del conjunto).
+        
+        Sea $G$ bipartito. Pruebe que \begin{equation*}
+            \max \{|M| : M\text{ es matching de }G\}=\min\{|C|: C\text{ es cover de }G\}
+        \end{equation*}
+
+    \item Se tiene un conjunto $P$ de proyectos. Cada proyecto $i\in P$ tiene asociado una utilidad $p_i\neq 0$ (que puede ser positiva o negativa). También se tienen proyectos que son requisitos de otros (si $i$ es requisito de $j$, para hacer $i$ es necesario también hacer $j$), en un conjunto $R$ de requisitos. Diseñe un algoritmo que maximice la suma de las utilidades.
+\end{enumerate}
+\end{document}
