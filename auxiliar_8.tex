@@ -1,0 +1,37 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 8}
+\end{center}
+
+\begin{center}
+	\bf{Flujo Máximo y Emparejamiento Bipartito}\\
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+	\item Considere dos secuencias de números positivos $\{d_i^{+}\}_{i=1}^n$ y $\{d_i^{-}\}_{i=1}^n$. Diseñe un algoritmo que determine si existe un digrafo $G$ con vértices $\{v_1, \ldots, v_n\}$ tal que
+	\[\forall i \in[n], d^{+}(v_i)=d_i^{+} \land \: d^{-}(v_i)=d_i^{-}\]
+
+	\item Pruebe que en grafos acíclicos, de existir un emparejamiento perfecto, este es único.
+	% (b) Debilite la condición anterior a algo del estilo "en grafos sin ciclos de largo __ , de existir un emparejamiento perfecto, este es único."
+	% (c) Sea $G$ un grafo tal que su emparejamiento máximo tiene tamaño $k$ y sea $M$ un emparejamiento de $G$. Pruebe que $G$ tiene otro emparejamiento $M^{\prime}$ de tamaño $k$ tal que todo vértice $M$-cubierto también es $M^{\prime}$-cubierto.
+	
+	\item Sea $M \in\{0,1\}^{p \times q}$. Describa un algoritmo para seleccionar un conjunto $Q$ de filas y columnas de $M$ y $S$ un conjunto de 1's de $M$ tales que $|Q|=|S|$ y se cumple que
+	\begin{enumerate}
+		\item Cada 1 de $M$ está en una de las filas y/o columnas de $Q$,
+		\item Cada fila y cada columna de $M$ contiene a lo más uno de los 1 's de S.
+	\end{enumerate}
+	
+	\item \textbf{[Propuesto]} Una gran compañía de papel higiénico con fabricas a lo largo del país busca distribuir sus productos a todas las tiendas con las que tienen convenio. Cada tienda $i \in T$ necesita $b_i$ rollos y cada fábrica $j \in F$ puede producir a lo más $a_j$ rollos. Por razones logísticas y legales, no se pueden enviar rollos entre cualquier fabrica y cualquier tienda. Pruebe que la demanda se puede satisfacer si y solo si:
+	\[\forall C \subseteq T, \: a(N(C)) \geq b(C)\]
+	Donde $N(C)$ representa las fabricas que pueden enviar rollos a las tiendas $C$.
+	
+	\item \textbf{[Propuesto]}
+	\begin{enumerate}
+		\item Sea $G=(V,E)$ un grafo bipartito tal que $\forall v \in V, d(v)=k \geq 1$ fijo. Pruebe que $G$ posee un emparejamiento perfecto.
+		\item Sea $G=(V,E)$ un grafo bipartito con clases $A$ y $B$ tales que $|A|=|B|=n$. Suponga además que $\forall v \in V, d(v) \geq \frac{n}{2}$. Pruebe que $G$ posee un emparejamiento perfecto.
+	\end{enumerate}
+
+\end{enumerate}
+\end{document}
