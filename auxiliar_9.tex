@@ -1,0 +1,44 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 9}
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+
+    \item Se quiere repartir poleras de distintos colores a un grupo de $n$ personas. Suponga que a cada persona le gustan 2 colores, y se tienen justo $n$ poleras de las cuales $c_i$ son de color $i$. Encuentre un algoritmo que determine si se pueden repartir las poleras de forma que cada persona sea feliz (es decir, quede con una polera de un color que le gusta).
+    
+    \item Sea $G$ bipartito $k-$regular (es decir, $\forall v \in V(G), d_G(v)=k$). Pruebe que $G$ tiene un matching perfecto. ¿Se tiene lo anterior si $G$ no es bipartito?
+    
+    \item Considere el siguiente problema: dado un tablero cuadriculado $T$ roto (pueden pensarlo como una matriz donde solo algunos casilleros se pueden usar, el resto son inexistentes), se desea saber cuantas piezas de dominó se pueden ubicar en $T$ sin que dos piezas se sobrepongan. \\Por ejemplo, en el siguiente tablero de 14 casilleros, se pueden ubicar solo 6 piezas de dominó:\\ 
+    \begin{tikzpicture}
+    \foreach \i in {2,...,4}
+    {\foreach \j in {2,...,4}
+    \draw (\i,\j) rectangle +(1,1);
+    }
+    \foreach \j in {1,...,3}
+    {\foreach \i in {1,...,3}
+    \draw (\i,\j) rectangle +(1,1);
+    }
+    \end{tikzpicture}\\
+    Modele este problema como un matching de cardinalidad máxima en un grafo bipartito.
+
+    \item \textbf{Propuesto:} Use un teorema visto en un auxiliar anterior para demostrar que en el siguiente tablero se pueden ubicar como máximo 5 dominós sin sobreponerse.\\
+    \begin{tikzpicture}
+    \foreach \i/\j in {1/3,2/2,2/3,2/4,3/2,3/3,3/4,3/5,4/1,4/2,4/3,4/4,5/2}
+    {\draw (\i,\j) rectangle +(1,1);}
+    \end{tikzpicture}
+
+    \item \textbf{Propuesto:} Un mazo de 52 cartas tiene 13 cartas de cada una de 4 pintas. Un adversario las baraja y reparte en 13 montones de 4 cartas cada uno. Demuestre que siempre es posible escoger una carta de cada montón de forma que las 13 cartas escogidas formen una escalera (es decir, se escoge una carta de cada número).
+    \\ \textit{Hint: Teorema de Hall}
+
+	\item \textbf{Propuesto:} Explique brevemente cómo resolver las siguientes modificaciones del problema de flujo máximo:\begin{enumerate}
+        \item Se tienen múltiples fuentes de flujo $s$ y múltiples sumideros $t$.
+        \item Se tienen nodos con capacidades (es decir, el máximo flujo que entra y sale del nodo está acotado por su capacidad).
+    \end{enumerate}
+
+    \item Una familia de $n$ conejos vive en un campo en el que tienen $m$ madrigueras. Una tarde están en el campo en distintas posiciones (fijas) comiendo zanahorias. En un momento, uno de ellos ve a la distancia un halcón acercándose, que llegará en un tiempo $t$. Se sabe a cuáles madrigueras alcanza a correr cada conejo antes de que el halcón aterrice. El problema es que en cada madriguera solo cabe un conejo. Considere el problema de determinar si todos los conejos pueden salvarse y modélelo como un problema de flujo máximo.
+    
+\end{enumerate}
+\end{document}
