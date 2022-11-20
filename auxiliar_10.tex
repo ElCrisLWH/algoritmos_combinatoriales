@@ -1,0 +1,93 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 10}
+\end{center}
+
+\begin{center}
+	\bf{Programas Lineales Enteros}\\
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+	\item \textbf{Machine Productivity}
+
+	En una fábrica, se tienen $n$ tanques de combustible distintos de tamaño $p_j, j\in[n]$ y $m$ máquinas cuya producción es proporcional al combustible administrado hasta cierta capacidad $k_i, i\in [m]$. Es posible cargar una máquina con combustible por sobre su capacidad, pero el exceso no generará ningún beneficio.
+	
+	Formule el problema de encontrar una asignación de tanques a máquinas que máximice la productividad de las máquinas como un programa lineal entero.
+	
+	\item \textbf{Symmetric Traveling Salesman Problem}
+	
+	Sea $G=(V, E)$ grafo no dirigido y $d: E \rightarrow \R_+$ una función donde $d_e$ representa la distancia entre los extremos de la arista $e$.
+	Sea $x \in \{0,1\}^{E}$ la indicatriz de un tour (ciclo Hamiltoniano) en $G$.
+	
+	% Claramente, para todo $v \in V$, todo tour de $G$ contiene dos aristas incidentes en $v$.
+	% Luego, $x$ debe satisfacer las siguientes restricciones:
+
+	% \begin{equation}\tag{Restricciones de grado}
+	% x\left(\delta_{E}(v)\right)=2, \quad \forall v \in V
+	% \end{equation}
+
+	% Además, como un tour es conexo y visita todos los vértices de $G$, cualquiera sea el corte $\emptyset \subsetneq S \subsetneq V$ en $G$ deben haber al menos dos aristas del tour cuyos extremos estén uno en $S$ y otro en su complemento. Es decir, $x$ debe satisfacer las siguientes restricciones:
+	% \begin{equation}\tag{Restricciones de subtour}
+	% x\left(\delta_{E}(S)\right) \geq 2, \quad \forall \emptyset \subsetneq S \subsetneq V
+	% \end{equation}
+
+	Pruebe que la formulación de Dantzig-Fulkerson-Johnson es exacta, es decir que un tour óptimo en $G$ está determinado por una solución óptima del siguiente PLE:
+
+	\[\begin{array}{llr}
+	(TSP)\quad 	&\displaystyle\min \sum_{e \in E} d_e x_e &\\
+	s.a. \quad  & x(\delta_{E}(v))=2 & \forall v \in V\\
+				& x(\delta_{E}(S)) \geq 2 & \forall \emptyset \subsetneq S \subsetneq V\\
+				& x_e \in \{0,1\} & \forall e \in E
+	\end{array}\]
+
+	\item El principio del palomar establece que el problema no tiene solución:
+
+	\textit{(P) Colocar $n+1$ palomas en $n$ agujeros de manera que no haya dos palomas que compartan un agujero.}
+	
+	Formule \textit{(P)} como un programa lineal entero con dos tipos de restricciones
+	\begin{enumerate}
+		\item Cada paloma debe entrar en un agujero.
+		\item Para cada pareja de palomas, a lo sumo una de las dos aves puede entrar en un agujero dado.
+	\end{enumerate}
+	
+	Demostrar que no existe ninguna solución entera que satisfaga $(a)$ y $(b)$, pero que el programa lineal con las restricciones $(a)$ y $(b)$ es factible.
+
+	\item \textbf{[Propuesto] Knapsack}
+
+	Supongamos que se tiene una mochila que puede llevar un máximo de peso $b$ y $n$ objetos donde el $i$-ésimo tiene peso $\omega_i$ y beneficio $c_i$.
+	
+	Nuestro objetivo será cargar la mochila con estos objetos sin violar la restricción de capacidad de la mochila de manera que maximicemos nuestra utilidad.
+
+	\begin{enumerate}
+		\item Modele el problema como un programa lineal entero y defina la relajación lineal.
+	
+		\item Demuestre que si $\bar{x}$ es un óptimo para el problema relajado, entonces a lo más una de sus coordenadas es fraccional (no es entera).
+	\end{enumerate}
+
+	\item \textbf{[Propuesto] Minimum Spanning Tree}
+
+	Queremos construir una red de comunicación que conecte a todas las ciudades a costo mínimo. Para ello, contamos con un grafo no dirigido $G=(V,E)$, en donde $V$ es el conjunto de ciudades, $E$ las autopistas que conectan las ciudad y $\omega_e$ el costo de usar la autopista $e\in E$. El problema anterior se puede formular como el de encontrar un MST.
+	Considere las siguientes formulaciones como programa lineal entero.
+    
+    \begin{align*}
+        (M_1) \quad & \min \sum_{e\in E}\omega_ex_e\\
+        s.a.\quad & x(E)=|V|-1\\
+        & x(\delta(S))\geq 1,\forall S\subset V, S\neq \emptyset\\
+        &x_e\in\{0,1\}\quad\forall e\in E
+    \end{align*}
+    
+    \begin{align*}
+        (M_2) \quad & \min \sum_{e\in E}\omega_ex_e\\
+        s.a.\quad & x(E)=|V|-1\\
+        & x(E(S))\leq |S|-1,\forall S\subset V, S\neq \emptyset\\
+        &x_e\in\{0,1\}\quad\forall e\in E
+    \end{align*}
+
+	\begin{enumerate}
+		\item Demuestre que ambos modelos con exactos.
+		\item Relaje la integralidad de la primera formulación y dé un ejemplo de un punto factible que no corresponde a solución del problema original.
+	\end{enumerate}
+\end{enumerate}
+\end{document}
