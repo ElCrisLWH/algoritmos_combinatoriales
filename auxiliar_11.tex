@@ -1,0 +1,21 @@
+\input{auxiliar}
+\begin{document}
+\header
+\begin{center}
+	\LARGE \bf{Auxiliar 11}
+\end{center}
+
+\begin{enumerate}[label ={\bf P\arabic*}]
+    %\item (Recordatorio de matroides)
+	\item Sea $\mathcal{M} = (X,\mathcal{I})$ matroide y $f:X\to Y$ función epiyectiva. \begin{enumerate}
+        \item Pruebe que $\mathcal{M}_f = (Y, f(\mathcal{I}))$ es matroide, donde $f(\mathcal{I}) := \{f(J) | J \in \mathcal{I}\}$. 
+        \item \textbf{Propuesto:} Sea $r$ función de rango de $\mathcal{M}$. Pruebe que \\$r_f(Q) = \min\limits_{Z\subseteq Q} [r(f^{-1}(Z)) + |Q\setminus Z|]$ es rango de $\mathcal{M}_f$.
+    \end{enumerate}
+    \item Modele los siguientes problemas como intersecciones de matroides:\begin{enumerate}
+        \item Sea $G=(V,E)$ un grafo simple y $W\subseteq V$ un conjunto estable (es decir, tal que $\forall u,v\in W, uv\notin E$). Determine si existe $T^*$ árbol generador de $G$ tal que los vértices $v\in W$ son hojas de $T^*$.
+        \item Sean $G_1=(V_1,E_1), G_2=(V_2,E_2)$ grafos simples tales que $|V_1|=|V_2|$ y sea $\phi: E_1\to E_2$ biyectiva. Determine si existe $T^*$ árbol generador de $G_1$ tal que $\phi(T^*)$ sea árbol generador de $G_2$.
+    \end{enumerate}
+    \item Sea $G=(V,E)$ un grafo conexo tal que $|V|=n$. Sea $\varphi:E\to[n-1]$ coloreo de las aristas de $G$. Un árbol generador $T$ se dice \textit{arcoiris} si tiene exactamente una arista de cada color. Pruebe que $G$ tiene un árbol generador arcoiris si y solo si al borrar todas las aristas de cualquier conjunto de $c$ colores de $G$ se generan a lo más $c+1$ componentes conexas.
+    %\item \textbf{Propuesto:} Sea $(X, \mathcal{I})$ matroide y $r$ su función de rango, sean $A,B\subseteq X$. Pruebe que $r(A\cup B)\leq r(A)+r(B)-r(A\cap B)$. ¿Se tiene la igualdad en algún caso?
+\end{enumerate}
+\end{document}
